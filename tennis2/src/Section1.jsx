@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import background from './assets/pexels-cottonbro-5730299.jpg'; // Verify this path exists
 
 export default function Section1() {
   const contentVariants = {
@@ -13,15 +12,8 @@ export default function Section1() {
   };
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
-      <img
-        src={background}
-        alt="Tennis Background"
-        className="absolute inset-0 w-full h-full object-cover filter grayscale z-0"
-        loading="lazy"
-        onError={() => console.error('Failed to load background image')}
-      />
-      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 z-10">
+    <section className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800">
+      <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-10">
         <motion.div
           className="text-center text-white p-4 max-w-3xl"
           initial="hidden"
