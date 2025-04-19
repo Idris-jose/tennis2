@@ -1,55 +1,62 @@
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import background from './assets/pexels-cottonbro-5730299.jpg';
 import pic2 from './assets/pexels-shkrabaanthony-6827094.jpg';
 import pic3 from './assets/pexels-cottonbro-5741058.jpg';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 export default function Section2() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.3, delayChildren: 0.2 },
+      transition: { duration: 0.4, ease: 'easeOut' },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-    hover: { scale:1.05 ,  transition: { duration: 0.3 } },
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.4, ease: 'easeOut' },
+    },
+    hover: { scale: 1.02, transition: { duration: 0.2 } },
   };
 
   return (
-    <section className="relative">
-      <div className="flex h-full w-full items-center justify-center">
+    <section className="relative bg-black py-8">
+      <div className="container mx-auto px-4">
         <motion.div
-          className="grid h-auto w-full gap-4 mt-4 bg-black p-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-auto rounded-lg shadow-md"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {/* Build Your Team */}
           <motion.div
-            className="col-span-1 bg-white rounded-lg shadow-md flex flex-col items-center justify-center p-4"
+            className="bg-white rounded-lg shadow-md flex flex-col items-center justify-between p-6"
             variants={itemVariants}
             whileHover="hover"
           >
-            <h1 className="text-black text-2xl sm:text-3xl lg:text-4xl font-semibold text-center">
+            <h1 className="text-black text-2xl sm:text-3xl lg:text-4xl font-semibold text-center mb-4">
               Build Your Team
             </h1>
             <img
               src={background}
-              
-              className="h-[15rem] sm:h-[18rem] lg:h-[20rem] w-full object-cover rounded-2xl p-3"
-              
+              alt="Build Your Team"
+              className="h-48 sm:h-56 lg:h-64 w-full object-cover rounded-xl mb-4"
+              loading="lazy"
             />
-            <p className="text-center">Select from top ATP & WTA players. Optimize your roster.</p>
+            <p className="text-center text-gray-600 mb-6">
+              Select from top ATP & WTA players. Optimize your roster.
+            </p>
             <Link to="/team/create">
               <motion.button
-                className="bg-yellow-500 shadow-amber-300 shadow-lg text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full"
-                whileHover={{ scale: 1.1 }}
+                className="bg-yellow-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-yellow-400"
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
               >
                 Create Team
               </motion.button>
@@ -58,24 +65,28 @@ export default function Section2() {
 
           {/* Live Performance Tracking */}
           <motion.div
-          whileHover="hover"
-            className="col-span-1 bg-white rounded-lg shadow-md flex flex-col items-center justify-center p-4"
+            className="bg-white rounded-lg shadow-md flex flex-col items-center justify-between p-6"
             variants={itemVariants}
+            whileHover="hover"
           >
-            <h1 className="text-black text-2xl sm:text-3xl lg:text-4xl font-semibold text-center">
+            <h1 className="text-black text-2xl sm:text-3xl lg:text-4xl font-semibold text-center mb-4">
               Live Performance Tracking
             </h1>
             <img
               src={pic2}
-              className="rounded-2xl h-[15rem] sm:h-[18rem] lg:h-[20rem] w-full object-cover p-3"
-              
+              alt="Live Performance Tracking"
+              className="h-48 sm:h-56 lg:h-64 w-full object-cover rounded-xl mb-4"
+              loading="lazy"
             />
-            <p className="text-center">Real-time stats from matches worldwide.</p>
+            <p className="text-center text-gray-600 mb-6">
+              Real-time stats from matches worldwide.
+            </p>
             <Link to="/live-scoring">
               <motion.button
-                className="bg-yellow-500 shadow-amber-300 shadow-lg text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full"
-                whileHover={{ scale: 1.1 }}
+                className="bg-yellow-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-yellow-400"
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
               >
                 View Live Scores
               </motion.button>
@@ -84,24 +95,28 @@ export default function Section2() {
 
           {/* Compete Globally */}
           <motion.div
-          whileHover="hover"
-            className="col-span-1 bg-white rounded-lg shadow-md flex flex-col items-center justify-center p-4"
+            className="bg-white rounded-lg shadow-md flex flex-col items-center justify-between p-6"
             variants={itemVariants}
+            whileHover="hover"
           >
-            <h1 className="text-black text-2xl sm:text-3xl lg:text-4xl font-semibold text-center">
+            <h1 className="text-black text-2xl sm:text-3xl lg:text-4xl font-semibold text-center mb-4">
               Compete Globally
             </h1>
             <img
               src={pic3}
-              className="h-[15rem] sm:h-[18rem] lg:h-[20rem] w-full object-cover rounded-2xl p-3"
-              
+              alt="Compete Globally"
+              className="h-48 sm:h-56 lg:h-64 w-full object-cover rounded-xl mb-4"
+              loading="lazy"
             />
-            <p className="text-center">Climb the ranks and win exclusive rewards.</p>
+            <p className="text-center text-gray-600 mb-6">
+              Climb the ranks and win exclusive rewards.
+            </p>
             <Link to="/leaderboards">
               <motion.button
-                className="bg-yellow-500 shadow-amber-300 shadow-lg text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full"
-                whileHover={{ scale: 1.1 }}
+                className="bg-yellow-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-yellow-400"
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
               >
                 See Leaderboards
               </motion.button>

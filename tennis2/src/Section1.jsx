@@ -4,22 +4,25 @@ import background from './assets/pexels-cottonbro-5730299.jpg'; // Ensure this e
 
 export default function Section1() {
   const contentVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      transition: { 
+        duration: 0.5, 
+        ease: 'easeOut' 
+      }
+    }
   };
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      <motion.img
+      <img
         src={background}
         alt="Background"
-        className="w-full h-full object-cover"
-        style={{ filter: 'grayscale(1)', mixBlendMode: 'normal' }}
+        className="w-full h-full object-cover filter grayscale"
       />
-      <div
-        className="absolute inset-0 flex items-center justify-center z-10"
-        style={{ background: 'rgba(0, 0, 0, 0.2)', backdropFilter: 'contrast(1.2)' }}
-      >
+      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 backdrop-contrast-125">
         <motion.div
           className="text-center text-white p-4"
           initial="hidden"
@@ -28,21 +31,31 @@ export default function Section1() {
         >
           <motion.h1
             className="text-5xl lg:text-8xl font-bold mb-4"
-            whileHover={{ scale: 1.05, color: '#FFD700', transition: { duration: 0.3 } }}
+            whileHover={{ 
+              scale: 1.03, 
+              color: '#FFD700', 
+              transition: { duration: 0.2 } 
+            }}
           >
             Unleash Your Tennis Strategy
           </motion.h1>
-          <motion.p className="md:text-3xl text-2xl mb-8" variantsdp={contentVariants}>
+          <motion.p 
+            className="text-2xl md:text-3xl mb-8"
+            variants={contentVariants}
+          >
             Pick your dream team of real-world tennis stars,
             <br />
             track their performance, and dominate the leaderboard.
           </motion.p>
           <Link to="/login">
             <motion.button
-              className="bg-yellow-500 shadow-amber-300 shadow-lg text-white px-6 py-3 rounded-full"
-              whileHover={{ scale: 1.1, backgroundColor: '#facc15' }}
+              className="bg-yellow-500 text-white px-6 py-3 rounded-full shadow-lg"
+              whileHover={{ 
+                scale: 1.05, 
+                backgroundColor: '#facc15',
+                transition: { duration: 0.2 }
+              }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.3 }}
             >
               Get Started
             </motion.button>

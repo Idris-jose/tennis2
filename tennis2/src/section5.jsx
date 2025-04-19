@@ -1,43 +1,92 @@
-import image3 from './assets/pexels-shkrabaanthony-6827094.jpg';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import image3 from './assets/pexels-shkrabaanthony-6827094.jpg';
 
 export default function Section5() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, ease: 'easeOut' },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: 'easeOut' },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, rotate: -3 },
+    visible: {
+      opacity: 1,
+      rotate: 0,
+      transition: { duration: 0.5, ease: 'easeOut' },
+    },
+    hover: { scale: 1.02, rotate: 1, transition: { duration: 0.2 } },
+  };
+
   return (
-    <section className="relative bg-white mt-8">
-      <div className="flex flex-col lg:flex-row p-4 items-center lg:items-start">
-        <div className="text-center lg:text-left mb-6 lg:mb-0">
-          <h1 className="text-yellow-400 text-6xl lg:text-9xl">
-            Ready to <br />Serve Up <br />Victory?
-          </h1>
-          <p className="text-xl lg:text-3xl mt-4">
+    <section className="relative bg-gradient-to-b from-white to-gray-100 py-12">
+      <motion.div
+        className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4 gap-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-lg">
+          <motion.h1
+            className="text-5xl md:text-7xl lg:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-600 mb-4"
+            variants={itemVariants}
+          >
+            Ready to <br /> Serve Up <br /> Victory?
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-xl lg:text-2xl text-gray-700 mt-4"
+            variants={itemVariants}
+          >
             Sign up now and start building your fantasy tennis legacy.
-          </p>
-          <div className="flex flex-col lg:flex-row gap-2 justify-center lg:justify-start mt-6">
+          </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 mt-6"
+            variants={itemVariants}
+          >
             <Link to="/signup">
-              <button className="bg-yellow-500 shadow-amber-300 shadow-lg text-white px-6 py-3 rounded-full hover:bg-yellow-400 transition duration-300">
+              <motion.button
+                className="bg-yellow-500 text-white px-8 py-3 rounded-full shadow-md hover:bg-yellow-400 text-base md:text-lg font-semibold"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
                 Sign Up to Start
-              </button>
+              </motion.button>
             </Link>
             <Link to="/login">
-              <button className="border-yellow-500 border-2 shadow-amber-300 shadow-lg text-black px-6 py-3 rounded-full  lg:w-auto hover:bg-yellow-500 transition duration-300 hover:text-amber-50">
-                Log in
-              </button>
+              <motion.button
+                className="border-2 border-yellow-500 text-yellow-500 px-8 py-3 rounded-full shadow-md hover:bg-yellow-500 hover:text-white text-base md:text-lg font-semibold"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                Log In
+              </motion.button>
             </Link>
-          </div>
+          </motion.div>
         </div>
-        <img
+        <motion.img
           src={image3}
-          className="w-full lg:w-[60rem] h-[20rem] lg:h-[40rem] object-cover rounded-2xl"
-          style={{ filter: 'grayscale(1)', mixBlendMode: 'normal' }}
+          alt="Tennis Action"
+          className="w-full lg:w-[40rem] h-64 md:h-80 lg:h-[36rem] object-cover rounded-2xl shadow-2xl filter grayscale"
+          variants={imageVariants}
+          whileHover="hover"
+          loading="lazy"
         />
-      </div>
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27100%25%27 height=%27100%25%27%3E%3Cfilter id=%27grain%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.8%27 numOctaves=%271%27 stitchTiles=%27stitch%27/%3E%3CfeColorMatrix type=%27saturate%27 values=%270%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23grain)%27/%3E%3C/svg%3E")',
-          opacity: 0.4,
-        }}
-      ></div>
+      </motion.div>
     </section>
   );
 }
