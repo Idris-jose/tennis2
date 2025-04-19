@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import background from './assets/pexels-cottonbro-5730299.jpg'; // Verify this path exists
 
 export default function Section1() {
   const contentVariants = {
@@ -9,28 +10,27 @@ export default function Section1() {
       scale: 1,
       transition: { duration: 0.5, ease: 'easeOut' },
     },
-    exit: {
-      opacity: 0,
-      scale: 0.95,
-      transition: { duration: 0.3, ease: 'easeIn' },
-    },
   };
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800">
-      <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-10">
+    <section className="relative w-full h-screen overflow-hidden">
+      <img
+        src={background}
+        alt="Tennis Background"
+        className="absolute inset-0 w-full h-full object-cover filter grayscale z-0"
+        loading="lazy"
+        onError={() => console.error('Failed to load background image')}
+      />
+      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 z-10">
         <motion.div
           className="text-center text-white p-4 max-w-3xl"
           initial="hidden"
-          whileInView="visible"
-          exit="exit"
+          animate="visible"
           variants={contentVariants}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ staggerChildren: 0.1 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <motion.h1
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-600"
-            variants={contentVariants}
             whileHover={{
               scale: 1.03,
               transition: { duration: 0.2 },
@@ -49,7 +49,6 @@ export default function Section1() {
           <Link to="/login">
             <motion.button
               className="bg-yellow-500 text-white px-8 py-4 rounded-full shadow-lg text-lg md:text-xl font-semibold"
-              variants={contentVariants}
               whileHover={{
                 scale: 1.05,
                 backgroundColor: '#facc15',

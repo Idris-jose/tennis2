@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Dash from './assets/image_fx_ (12).jpg';
+import img1 from './assets/pexels-cottonbro-5740529.jpg';
 
-export default function Section3() {
+export default function Section4() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,67 +26,94 @@ export default function Section3() {
       scale: 0.95,
       transition: { duration: 0.3, ease: 'easeIn' },
     },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, rotate: -5 },
-    visible: {
-      opacity: 1,
-      rotate: 0,
-      transition: { duration: 0.5, ease: 'easeOut' },
-    },
-    exit: {
-      opacity: 0,
-      rotate: -5,
-      transition: { duration: 0.3, ease: 'easeIn' },
-    },
-    hover: { scale: 1.02, rotate: 2, transition: { duration: 0.2 } },
+    hover: { scale: 1.03, rotate: 1, transition: { duration: 0.2 } },
   };
 
   return (
     <section className="relative bg-gradient-to-b from-black to-gray-900 py-12">
-      <motion.div
-        className="flex flex-col items-center justify-center px-4 sm:px-8 text-center"
-        initial="hidden"
-        whileInView="visible"
-        exit="exit"
-        variants={containerVariants}
-        viewport={{ once: false, amount: 0.2 }}
-      >
+      <div className="container mx-auto px-4 flex flex-col items-center justify-center">
         <motion.h1
-          className="text-4xl sm:text-6xl lg:text-8xl text-white font-bold mt-5 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-600"
+          className="text-4xl md:text-6xl lg:text-8xl text-white font-bold text-center mb-8"
           variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: false, amount: 0.2 }}
         >
-          Your Command Center
+          Master the Game with Data
         </motion.h1>
-        <motion.p
-          className="text-white text-lg sm:text-xl lg:text-2xl mt-4 opacity-80"
-          variants={itemVariants}
+        <motion.div
+          className="flex flex-wrap justify-center gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: false, amount: 0.2 }}
         >
-          Take control of your tennis fantasy with a sleek, real-time dashboard.
-        </motion.p>
-        <motion.img
-          src={Dash}
-          alt="Dashboard Preview"
-          className="w-full max-w-4xl object-fill rounded-2xl mt-8 shadow-2xl"
-          variants={imageVariants}
-          whileHover="hover"
-          loading="lazy"
-        />
-        <motion.div variants={itemVariants} className="mt-8">
-          <Link to="/signup">
-            <motion.button
-              className="bg-yellow-500 text-white px-8 py-4 rounded-full shadow-lg hover:bg-yellow-400 text-base sm:text-lg lg:text-xl font-semibold"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
+          {/* Top Aces This Week */}
+          <motion.div
+            className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-between w-full sm:w-80"
+            variants={itemVariants}
+            whileHover="hover"
+          >
+            <h2 className="text-black text-2xl md:text-3xl font-semibold text-center mb-4">
+              Top Aces This Week
+            </h2>
+            <img
+              src={img1}
+              alt="Top Aces"
+              className="object-cover h-40 w-full rounded-lg mb-4"
+              loading="lazy"
+              onError={() => console.error('Failed to load Top Aces image')}
+            />
+            <p className="text-black text-lg md:text-xl text-center">Carlos Alcaraz</p>
+            <p className="text-gray-600 text-sm md:text-base">15 aces</p>
+          </motion.div>
+
+          {/* Fastest Serves */}
+          <motion.div
+            className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-between w-full sm:w-80"
+            variants={itemVariants}
+            whileHover="hover"
+          >
+            <h2 className="text-black text-2xl md:text-3xl font-semibold text-center mb-4">
+              Fastest Serves
+            </h2>
+            <img
+              src={img1}
+              alt="Fastest Serves"
+              className="object-cover h-40 w-full rounded-lg mb-4"
+              loading="lazy"
+              onError={() => console.error('Failed to load Fastest Serves image')}
+            />
+            <p className="text-black text-lg md:text-xl text-center">Nick Kyrgios: 135 mph</p>
+          </motion.div>
+
+          {/* Upset Picks */}
+          <motion.div
+            className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-between w-full sm:w-80 relative overflow-hidden"
+            variants={itemVariants}
+            whileHover="hover"
+          >
+            <h2 className="text-black text-2xl md:text-3xl font-semibold text-center mb-4">
+              Upset Picks
+            </h2>
+            <img
+              src={img1}
+              alt="Upset Picks"
+              className="object-cover h-40 w-full rounded-lg mb-4"
+              loading="lazy"
+              onError={() => console.error('Failed to load Upset Picks image')}
+            />
+            <motion.p
+              className="text-gray-600 text-sm md:text-base text-center absolute bottom-6 opacity-0"
+              whileHover={{ opacity: 1, y: -10, transition: { duration: 0.2 } }}
             >
-              Sign Up to Start
-            </motion.button>
-          </Link>
+              Select from top ATP & WTA players. Optimize your roster.
+            </motion.p>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
