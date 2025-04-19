@@ -9,6 +9,10 @@ export default function Section5() {
       opacity: 1,
       transition: { staggerChildren: 0.2, ease: 'easeOut' },
     },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.3, ease: 'easeIn' },
+    },
   };
 
   const itemVariants = {
@@ -17,6 +21,11 @@ export default function Section5() {
       opacity: 1,
       scale: 1,
       transition: { duration: 0.5, ease: 'easeOut' },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      transition: { duration: 0.3, ease: 'easeIn' },
     },
   };
 
@@ -27,6 +36,11 @@ export default function Section5() {
       rotate: 0,
       transition: { duration: 0.5, ease: 'easeOut' },
     },
+    exit: {
+      opacity: 0,
+      rotate: -3,
+      transition: { duration: 0.3, ease: 'easeIn' },
+    },
     hover: { scale: 1.02, rotate: 1, transition: { duration: 0.2 } },
   };
 
@@ -34,10 +48,11 @@ export default function Section5() {
     <section className="relative bg-gradient-to-b from-white to-gray-100 py-12">
       <motion.div
         className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4 gap-8"
-        variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        exit="exit"
+        variants={containerVariants}
+        viewport={{ once: false, amount: 0.2 }}
       >
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-lg">
           <motion.h1
@@ -59,6 +74,7 @@ export default function Section5() {
             <Link to="/signup">
               <motion.button
                 className="bg-yellow-500 text-white px-8 py-3 rounded-full shadow-md hover:bg-yellow-400 text-base md:text-lg font-semibold"
+                variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2 }}
@@ -69,6 +85,7 @@ export default function Section5() {
             <Link to="/login">
               <motion.button
                 className="border-2 border-yellow-500 text-yellow-500 px-8 py-3 rounded-full shadow-md hover:bg-yellow-500 hover:text-white text-base md:text-lg font-semibold"
+                variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2 }}

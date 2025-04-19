@@ -9,6 +9,10 @@ export default function Section3() {
       opacity: 1,
       transition: { staggerChildren: 0.2, ease: 'easeOut' },
     },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.3, ease: 'easeIn' },
+    },
   };
 
   const itemVariants = {
@@ -17,6 +21,11 @@ export default function Section3() {
       opacity: 1,
       scale: 1,
       transition: { duration: 0.5, ease: 'easeOut' },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      transition: { duration: 0.3, ease: 'easeIn' },
     },
   };
 
@@ -27,6 +36,11 @@ export default function Section3() {
       rotate: 0,
       transition: { duration: 0.5, ease: 'easeOut' },
     },
+    exit: {
+      opacity: 0,
+      rotate: -5,
+      transition: { duration: 0.3, ease: 'easeIn' },
+    },
     hover: { scale: 1.02, rotate: 2, transition: { duration: 0.2 } },
   };
 
@@ -34,10 +48,11 @@ export default function Section3() {
     <section className="relative bg-gradient-to-b from-black to-gray-900 py-12">
       <motion.div
         className="flex flex-col items-center justify-center px-4 sm:px-8 text-center"
-        variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        exit="exit"
+        variants={containerVariants}
+        viewport={{ once: false, amount: 0.2 }}
       >
         <motion.h1
           className="text-4xl sm:text-6xl lg:text-8xl text-white font-bold mt-5 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-600"
@@ -63,6 +78,7 @@ export default function Section3() {
           <Link to="/signup">
             <motion.button
               className="bg-yellow-500 text-white px-8 py-4 rounded-full shadow-lg hover:bg-yellow-400 text-base sm:text-lg lg:text-xl font-semibold"
+              variants={itemVariants}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}

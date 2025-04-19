@@ -9,7 +9,11 @@ export default function Section2() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { duration: 0.4, ease: 'easeOut' },
+      transition: { duration: 0.4, ease: 'easeOut', staggerChildren: 0.1 },
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.3, ease: 'easeIn' },
     },
   };
 
@@ -20,6 +24,11 @@ export default function Section2() {
       scale: 1,
       transition: { duration: 0.4, ease: 'easeOut' },
     },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      transition: { duration: 0.3, ease: 'easeIn' },
+    },
     hover: { scale: 1.02, transition: { duration: 0.2 } },
   };
 
@@ -28,10 +37,11 @@ export default function Section2() {
       <div className="container mx-auto px-4">
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          exit="exit"
+          variants={containerVariants}
+          viewport={{ once: false, amount: 0.2 }}
         >
           {/* Build Your Team */}
           <motion.div

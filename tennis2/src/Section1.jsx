@@ -9,6 +9,11 @@ export default function Section1() {
       scale: 1,
       transition: { duration: 0.5, ease: 'easeOut' },
     },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      transition: { duration: 0.3, ease: 'easeIn' },
+    },
   };
 
   return (
@@ -17,12 +22,15 @@ export default function Section1() {
         <motion.div
           className="text-center text-white p-4 max-w-3xl"
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          exit="exit"
           variants={contentVariants}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ staggerChildren: 0.1 }}
         >
           <motion.h1
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-600"
+            variants={contentVariants}
             whileHover={{
               scale: 1.03,
               transition: { duration: 0.2 },
@@ -41,6 +49,7 @@ export default function Section1() {
           <Link to="/login">
             <motion.button
               className="bg-yellow-500 text-white px-8 py-4 rounded-full shadow-lg text-lg md:text-xl font-semibold"
+              variants={contentVariants}
               whileHover={{
                 scale: 1.05,
                 backgroundColor: '#facc15',
